@@ -887,7 +887,7 @@
     import ApexChart from 'vue3-apexcharts';
 
     import { useMeta } from '@/composables/use-meta';
-    useMeta({ title: 'Widgets' });
+    useMeta({ title: 'Analitica' });
 
     const store = useStore();
 

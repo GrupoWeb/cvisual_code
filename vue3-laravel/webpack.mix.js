@@ -14,6 +14,9 @@ const path = require("path");
 
 mix.js("resources/js/src/main.js", "public/js")
     .webpackConfig({
+        stats: {
+            children: true,
+        },
         resolve: {
             alias: {
                 "@": path.resolve(__dirname, "resources/js/src/"),

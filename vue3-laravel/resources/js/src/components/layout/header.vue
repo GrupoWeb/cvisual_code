@@ -3,7 +3,7 @@
         <!--  BEGIN NAVBAR  -->
         <div class="header-container fixed-top">
             <header class="header navbar navbar-expand-sm">
-                <ul class="navbar-item theme-brand flex-row text-center">
+                <!-- <ul class="navbar-item theme-brand flex-row text-center">
                     <li class="nav-item theme-logo">
                         <router-link to="/">
                             <img src="@/assets/images/logo.svg" class="navbar-logo" alt="logo" />
@@ -12,7 +12,7 @@
                     <li class="nav-item theme-text">
                         <router-link to="/" class="nav-link"> CORK </router-link>
                     </li>
-                </ul>
+                </ul> -->
                 <div class="d-none horizontal-menu">
                     <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom" @click="$store.commit('toggleSideBar', !$store.state.is_show_sidebar)">
                         <svg
@@ -53,7 +53,7 @@
                         </svg>
                         <form class="form-inline search-full form-inline search" :class="{ 'input-focused': $store.state.is_show_search }">
                             <div class="search-bar">
-                                <input type="text" class="form-control search-form-control ms-lg-auto" placeholder="Search..." />
+                                <input type="text" class="form-control search-form-control ms-lg-auto" placeholder="Buscar..." />
                             </div>
                         </form>
                     </li>
@@ -119,7 +119,7 @@
                                 <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
                                 <polygon points="12 15 17 21 7 21 12 15"></polygon>
                             </svg>
-                            <span class="ms-2">System</span>
+                            <span class="ms-2">Sistema</span>
                         </a>
                     </div>
 
