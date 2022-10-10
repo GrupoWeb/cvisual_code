@@ -16,8 +16,3 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/{any}', [AppController::class, 'index'])->where('any', '.*');
-
-
-// Route::group(['prefix' => 'admin'], function () {
-//     Voyager::routes();
-// });

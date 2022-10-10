@@ -19,5 +19,11 @@
     "starter_kit": "Kit de inicio",
     "documentation": "Documentación",
     "ui_kit": "Kit de interfaz de usuario",
-    "more": "Más"
+    "more": "Más",
+    "LogIn":"Ingreso",
+    "textLogin":"Inicie sesión en su cuenta para continuar.",
+    "email": "Correo Electrónico",
+    "pwd": "Clave",
+    "forgot":"¿Has olvidado tu contraseña?",
+    "login":"Iniciar sesión"
 }

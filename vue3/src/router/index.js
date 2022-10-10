@@ -10,8 +10,12 @@ import store from '../store';
 
 const routes = [
     //dashboard
-    { path: '/', name: 'Home', component: Home },
-
+    // { path: '/', name: 'Home', component: Home },
+    { 
+        path: '/', name: 'Login', 
+        component: () => import(/* webpackChunkName: "auth-login-boxed" */ '../views/auth/login_boxed.vue'),
+        meta: { layout: 'auth' },
+    },
     {
         path: '/index2',
         name: 'index2',

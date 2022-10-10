@@ -8,6 +8,7 @@ const app = createApp(App);
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
 
+
 // modals
 import '@/assets/sass/components/custom-modal.scss';
 
