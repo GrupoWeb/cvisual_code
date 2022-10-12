@@ -81,10 +81,8 @@ export default {
             })
             .then((res) => {
               const { access_token } = res.data
-              console.log(access_token)
-              this.autenticationSet(access_token)
-              // this.$router.push({ name: 'default' });
-              // return res;
+              this.guardarUsuario(access_token);
+              this.$router.push({ name: 'default' });
             });
         }
       }

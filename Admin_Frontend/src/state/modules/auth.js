@@ -1,25 +1,58 @@
 import { getFirebaseBackend } from '../../authUtils.js'
+import router from '../../router/routes'
+// import decode from 'jwt-decode'
 
 export const state = {
     currentUser: sessionStorage.getItem('authUser'),
-    access_token: sessionStorage.getItem('access_token') || null,
+    token: '',
+    usuarioDB: ''
 }
 
 export const mutations = {
     SET_CURRENT_USER(state, newValue) {
         state.currentUser = newValue
         saveState('auth.currentUser', newValue)
-    }
+    },
+
+    obtenerUsuario(state, payload){
+        state.token = payload;
+        
+      }
 }
 
 export const getters = {
     // Whether the user is currently logged in.
     loggedIn(state) {
         return !!state.currentUser
-    }
+    },
+    estaActivo: state => !!state.token,
+    tokenActive(state){
+        return !!state.token
+    },
 }
 
 export const actions = {
+
+    guardarUsuario({commit}, payload){
+        localStorage.setItem('token', payload);
+        commit('obtenerUsuario', payload)
+      },
+      cerrarSesion({commit}){
+        commit('obtenerUsuario', '');
+        localStorage.removeItem('token');
+        router.push({name: 'login'});
+      },
+      leerToken({commit}){
+  
+        const token = localStorage.getItem('token');
+        if(token){
+          commit('obtenerUsuario', token);
+        }else{
+          commit('obtenerUsuario', '');
+        }
+  
+      },
+
     // This is automatically run in `src/state/store.js` when the app
     // starts, along with any other actions named `init` in other modules.
     // eslint-disable-next-line no-unused-vars

@@ -3,8 +3,9 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 export const authComputed = {
   ...mapState('auth', {
     currentUser: (state) => state.currentUser,
+    token:(state) => state.token
   }),
-  ...mapGetters('auth', ['loggedIn']),
+  ...mapGetters('auth', ['loggedIn','tokenActive']),
 }
 
 export const layoutComputed = {
@@ -17,7 +18,7 @@ export const layoutComputed = {
   })
 }
 
-export const authMethods = mapActions('auth', ['autenticationSet','logIn', 'logOut', 'register', 'resetPassword'])
+export const authMethods = mapActions('auth', ['guardarUsuario','autenticationSet','logIn', 'logOut', 'register', 'resetPassword'])
 
 export const layoutMethods = mapActions('layout', ['changeLayoutType', 'changeLayoutWidth', 'changeLeftSidebarType', 'changeTopbar', 'changeLoaderValue'])
 
