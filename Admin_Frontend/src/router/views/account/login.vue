@@ -4,14 +4,16 @@ import axios from "axios";
 import Layout from "../../layouts/auth";
 import {
   authMethods,
-  authFackMethods,
-  notificationMethods,
+  // authFackMethods,
+  // notificationMethods,
 } from "@/state/helpers";
 import { mapState } from "vuex";
 
 import appConfig from "@/app.config";
 import { required, email, helpers } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
+
+
 
 /**
  * Login component
@@ -35,7 +37,7 @@ export default {
   data() {
     return {
       email: "admin@themesbrand.com",
-      password: "123456",
+      password: "123456789",
       submitted: false,
       authError: null,
       tryingToLogIn: false,
@@ -59,8 +61,8 @@ export default {
   },
   methods: {
     ...authMethods,
-    ...authFackMethods,
-    ...notificationMethods,
+    // ...authFackMethods,
+    // ...notificationMethods,
     // Try to log the user in with the username
     // and password they provided.
     tryToLogIn() {
@@ -71,48 +73,18 @@ export default {
       if (this.v$.$invalid) {
         return;
       } else {
-        if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
-          this.tryingToLogIn = true;
-          // Reset the authError if it existed.
-          this.authError = null;
-          return (
-            this.logIn({
-              email: this.email,
-              password: this.password,
-            })
-              // eslint-disable-next-line no-unused-vars
-              .then((token) => {
-                this.tryingToLogIn = false;
-                this.isAuthError = false;
-                // Redirect to the originally requested page, or to the home page
-                this.$router.push(
-                  this.$route.query.redirectFrom || {
-                    name: "default",
-                  }
-                );
-              })
-              .catch((error) => {
-                this.tryingToLogIn = false;
-                this.authError = error ? error : "";
-                this.isAuthError = true;
-              })
-          );
-        } else if (process.env.VUE_APP_DEFAULT_AUTH === "fakebackend") {
-          const { email, password } = this;
-          if (email && password) {
-            this.login({
-              email,
-              password,
-            });
-          }
-        } else if (process.env.VUE_APP_DEFAULT_AUTH === "authapi") {
+        if (process.env.VUE_APP_DEFAULT_AUTH === "authapi") {
           axios
             .post("http://127.0.0.1:8000/api/login", {
               email: this.email,
               password: this.password,
             })
             .then((res) => {
-              return res;
+              const { access_token } = res.data
+              console.log(access_token)
+              this.autenticationSet(access_token)
+              // this.$router.push({ name: 'default' });
+              // return res;
             });
         }
       }
@@ -161,12 +133,12 @@ export default {
               dismissible
               >{{ authError }}</b-alert
             >
-            <div
+            <!-- <div
               v-if="notification.message"
               :class="'alert ' + notification.type"
             >
               {{ notification.message }}
-            </div>
+            </div> -->
 
             <b-form class="p-2" @submit.prevent="tryToLogIn">
               <b-form-group
@@ -230,46 +202,7 @@ export default {
                   >Log In</b-button
                 >
               </div>
-              <div class="mt-4 text-center">
-                <h5 class="font-size-14 mb-3">Sign in with</h5>
 
-                <ul class="list-inline">
-                  <li class="list-inline-item">
-                    <a
-                      href="javascript: void(0);"
-                      class="
-                        social-list-item
-                        bg-primary
-                        text-white
-                        border-primary
-                      "
-                    >
-                      <i class="mdi mdi-facebook"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a
-                      href="javascript: void(0);"
-                      class="social-list-item bg-info text-white border-info"
-                    >
-                      <i class="mdi mdi-twitter"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a
-                      href="javascript: void(0);"
-                      class="
-                        social-list-item
-                        bg-danger
-                        text-white
-                        border-danger
-                      "
-                    >
-                      <i class="mdi mdi-google"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
               <div class="mt-4 text-center">
                 <router-link to="/forgot-password" class="text-muted">
                   <i class="mdi mdi-lock me-1"></i> Forgot your password?
@@ -281,7 +214,7 @@ export default {
         </div>
         <!-- end card -->
 
-        <div class="mt-5 text-center">
+        <!-- <div class="mt-5 text-center">
           <p>
             Don't have an account ?
             <router-link to="/register" class="fw-medium text-primary"
@@ -292,7 +225,7 @@ export default {
             © {{ new Date().getFullYear() }} Skote. Crafted with
             <i class="mdi mdi-heart text-danger"></i> by Themesbrand
           </p>
-        </div>
+        </div> -->
         <!-- end row -->
       </div>
       <!-- end col -->

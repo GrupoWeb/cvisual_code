@@ -31,16 +31,16 @@ export default [
     name: "Register",
     component: () => import("./views/account/register"),
     meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        // If the user is already logged in
-        if (store.getters["auth/loggedIn"]) {
-          // Redirect to the home page instead
-          next({ name: "default" });
-        } else {
-          // Continue to the login page
-          next();
-        }
-      },
+      // beforeResolve(routeTo, routeFrom, next) {
+      //   // If the user is already logged in
+      //   if (store.getters["auth/loggedIn"]) {
+      //     // Redirect to the home page instead
+      //     next({ name: "default" });
+      //   } else {
+      //     // Continue to the login page
+      //     next();
+      //   }
+      // },
     },
   },
   {
@@ -48,16 +48,16 @@ export default [
     name: "Forgot password",
     component: () => import("./views/account/forgot-password"),
     meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        // If the user is already logged in
-        if (store.getters["auth/loggedIn"]) {
-          // Redirect to the home page instead
-          next({ name: "default" });
-        } else {
-          // Continue to the login page
-          next();
-        }
-      },
+      // beforeResolve(routeTo, routeFrom, next) {
+      //   // If the user is already logged in
+      //   if (store.getters["auth/loggedIn"]) {
+      //     // Redirect to the home page instead
+      //     next({ name: "default" });
+      //   } else {
+      //     // Continue to the login page
+      //     next();
+      //   }
+      // },
     },
   },
   {
@@ -67,11 +67,11 @@ export default [
     meta: {
       authRequired: true,
       beforeResolve(routeTo, routeFrom, next) {
-        if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
-          store.dispatch("auth/logOut");
-        } else {
-          store.dispatch("authfack/logout");
-        }
+        // if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
+        //   store.dispatch("auth/logOut");
+        // } else {
+        //   store.dispatch("authfack/logout");
+        // }
         const authRequiredOnPreviousRoute = routeFrom.matched.some((route) =>
           route.push("/login")
         );

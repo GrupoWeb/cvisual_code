@@ -2,6 +2,7 @@ import { getFirebaseBackend } from '../../authUtils.js'
 
 export const state = {
     currentUser: sessionStorage.getItem('authUser'),
+    access_token: sessionStorage.getItem('access_token') || null,
 }
 
 export const mutations = {
@@ -24,6 +25,15 @@ export const actions = {
     // eslint-disable-next-line no-unused-vars
     init({ state, dispatch }) {
         dispatch('validate')
+    },
+
+    // autentication user JWT
+    autenticationSet(access_token){
+        console.log("actions ", access_token)
+        // this.user = data.user;
+        // sessionStorage.user = JSON.stringify(data.user);
+        // this.access_token = data.access_token;
+        // sessionStorage.access_token = data.access_token;
     },
 
     // Logs in the current user.
