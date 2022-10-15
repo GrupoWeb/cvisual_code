@@ -45,9 +45,9 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'password'
 ], function () {
-    Route::post('create', [App\Http\Controllers\ForgotPasswordController::class, 'create']);
-    Route::get('find/{token}', [App\Http\Controllers\ForgotPasswordController::class, 'find']);
-    Route::post('reset', [App\Http\Controllers\ForgotPasswordController::class, 'reset']);
+    Route::post('create', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'create']);
+    Route::get('find/{token}', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'find']);
+    Route::post('reset', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'reset']);
 });
 
 Route::get('/redirect', function () {
