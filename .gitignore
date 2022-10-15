@@ -1,11 +1,11 @@
 .DS_Store
 node_modules
-vendor/*
+vendor
 /dist
 
 
 # local env files
-.env
+Admin/.env
 .env.local
 .env.*.local
 
