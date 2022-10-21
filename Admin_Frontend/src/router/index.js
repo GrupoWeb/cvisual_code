@@ -29,7 +29,7 @@ router.beforeEach((to, from, next) => {
   const rutaProtegida = to.matched.some(record => record.meta.requiresAuth)
   const token = localStorage.getItem('token');
   
-  console.log("token ", token, " Ruta ", rutaProtegida)
+  // console.log("token ", token, " Ruta ", rutaProtegida)
 
   if (rutaProtegida && token === null) {
       //next({ name: 'login', query: { next: to.name } })

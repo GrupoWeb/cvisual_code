@@ -1,11 +1,11 @@
 <script>
 import axios from "axios";
 
-import Layout from "../../layouts/auth";
+import Layout from "@/router/layouts/auth";
 import {
   authMethods,
   // authFackMethods,
-  // notificationMethods,
+  notificationMethods,
 } from "@/state/helpers";
 import { mapState } from "vuex";
 
@@ -13,11 +13,6 @@ import appConfig from "@/app.config";
 import { required, email, helpers } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 
-
-
-/**
- * Login component
- */
 export default {
   setup() {
     return { v$: useVuelidate() };
@@ -61,28 +56,23 @@ export default {
   },
   methods: {
     ...authMethods,
-    // ...authFackMethods,
-    // ...notificationMethods,
-    // Try to log the user in with the username
-    // and password they provided.
+    ...notificationMethods,
     tryToLogIn() {
       this.submitted = true;
-      // stop here if form is invalid
       this.v$.$touch();
-
       if (this.v$.$invalid) {
         return;
       } else {
         if (process.env.VUE_APP_DEFAULT_AUTH === "authapi") {
           axios
-            .post("http://127.0.0.1:8000/api/login", {
+            .post(process.env.VUE_APP_SERVER + "login", {
               email: this.email,
               password: this.password,
             })
             .then((res) => {
-              const { access_token } = res.data
+              const { access_token } = res.data;
               this.guardarUsuario(access_token);
-              this.$router.push({ name: 'default' });
+              this.$router.push({ name: "default" });
             });
         }
       }
@@ -193,7 +183,7 @@ export default {
                 name="checkbox-1"
                 value="accepted"
                 unchecked-value="not_accepted"
-              >Remember me
+                >Remember me
               </b-form-checkbox>
               <div class="mt-3 d-grid">
                 <b-button type="submit" variant="primary" class="btn-block"

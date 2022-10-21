@@ -8,23 +8,23 @@ export default [
   {
     path: "/",
     name: "login",
-    component: () => import("./views/account/login")
+    component: () => import(/* webpackChunkName: "login" */ '../modules/account/login')
   },
-  {
-    path: "/register",
-    name: "Register",
-    component: () => import("./views/account/register"),
-  },
-  {
-    path: "/forgot-password",
-    name: "Forgot password",
-    component: () => import("./views/account/forgot-password"),
-  },
-  {
-    path: "/logout",
-    name: "logout",
-    component: () => import("./views/account/logout"),
-  },
+  // {
+  //   path: "/register",
+  //   name: "Register",
+  //   component: () => import("./views/account/register"),
+  // },
+  // {
+  //   path: "/forgot-password",
+  //   name: "Forgot password",
+  //   component: () => import("./views/account/forgot-password"),
+  // },
+  // {
+  //   path: "/logout",
+  //   name: "logout",
+  //   component: () => import("./views/account/logout"),
+  // },
   {
     path: "/404",
     name: "404",

@@ -1,5 +1,5 @@
 <script>
- import { VueDraggableNext } from 'vue-draggable-next'
+import { VueDraggableNext } from "vue-draggable-next";
 
 import Layout from "../../layouts/main";
 import PageHeader from "@/components/page-header";
@@ -28,13 +28,13 @@ export default {
   data() {
     return {
       enabled: true,
-        list: [
-          { name: 'John', id: 1 },
-          { name: 'Joao', id: 2 },
-          { name: 'Jean', id: 3 },
-          { name: 'Gerard', id: 4 },
-        ],
-        dragging: false,
+      list: [
+        { name: "John", id: 1 },
+        { name: "Joao", id: 2 },
+        { name: "Jean", id: 3 },
+        { name: "Gerard", id: 4 },
+      ],
+      dragging: false,
       upcomingTasks: upcomingTasks,
       progressTasks: progressTasks,
       completedTasks: completedTasks,
@@ -55,11 +55,12 @@ export default {
       items2: [],
     };
   },
-    methods: {
-      log(event) {
-        console.log(event)
-      },
+  methods: {
+    log(event) {
+      event;
+      // console.log(event)
     },
+  },
 };
 </script>
 
@@ -93,19 +94,15 @@ export default {
                 <h4 class="card-title mb-4 pb-1">Upcoming</h4>
               </span>
 
-              <draggable
-        v-model="items1"
-        transition="100"
-        class="drop-zone"
-      >
-        <template v-slot:item="{ item }">
-          <div class="draggable-item">
-            {{ item.title }}
-          </div>
-        </template>
-      </draggable> 
+              <draggable v-model="items1" transition="100" class="drop-zone">
+                <template v-slot:item="{ item }">
+                  <div class="draggable-item">
+                    {{ item.title }}
+                  </div>
+                </template>
+              </draggable>
 
-             <draggable class="list-group"  v-model="upcomingTasks">
+              <draggable class="list-group" v-model="upcomingTasks">
                 <div
                   v-for="task in upcomingTasks"
                   :key="task.id"
@@ -193,8 +190,8 @@ export default {
               <span class="drag-column-header">
                 <h4 class="card-title mb-4 pb-1">In Progress</h4>
               </span>
-               <div class="flex m-10">
-    <!-- <draggable class="dragArea list-group w-full" :list="list" @change="log">
+              <div class="flex m-10">
+                <!-- <draggable class="dragArea list-group w-full" :list="list" @change="log">
       <div
         class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center"
         v-for="element in list"
@@ -203,9 +200,8 @@ export default {
         {{ element.name }}
       </div>
     </draggable> -->
-  </div>
-              <draggable class="list-group"  v-model="progressTasks">
-        
+              </div>
+              <draggable class="list-group" v-model="progressTasks">
                 <div
                   v-for="task in progressTasks"
                   :key="task.id"
@@ -293,12 +289,8 @@ export default {
               <span class="drag-column-header">
                 <h4 class="card-title mb-4 pb-1">Completed</h4>
               </span>
-              <draggable
-                class="list-group"
-              
-                v-model="completedTasks"
-              >
-                  <div
+              <draggable class="list-group" v-model="completedTasks">
+                <div
                   v-for="task in completedTasks"
                   :key="task.id"
                   class="card task-box"
@@ -349,7 +341,7 @@ export default {
                       <p class="mb-0 text-muted">Budget</p>
                     </div>
                   </div>
-            </div>
+                </div>
               </draggable>
               <div class="text-center d-grid">
                 <a href="javascript: void(0);" class="btn btn-primary mt-3">

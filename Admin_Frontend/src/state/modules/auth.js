@@ -62,10 +62,10 @@ export const actions = {
 
     // autentication user JWT
     autenticationSet(access_token){
-        console.log("actions ", access_token)
+        // console.log("actions ", access_token)
         // this.user = data.user;
         // sessionStorage.user = JSON.stringify(data.user);
-        // this.access_token = data.access_token;
+        this.access_token = access_token;
         // sessionStorage.access_token = data.access_token;
     },
 

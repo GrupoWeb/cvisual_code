@@ -31,4 +31,4 @@
 </body>
 
 </html>
-<?php /**PATH /var/www/html/resources/views/layouts/app.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/Admin/resources/views/layouts/app.blade.php ENDPATH**/ ?>
