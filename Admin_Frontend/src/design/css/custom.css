@@ -1,0 +1,38 @@
+/*
+Paleta de Colores
+
+
+646c7b,
+f47a72,
+e5433e,
+af3834,
+bf3c3b,
+f36056,
+cc3c3c,
+f46464,
+7c8460
+
+["646c7b",
+"f47a72",
+"e5433e",
+"af3834",
+"bf3c3b",
+"f36056",
+"cc3c3c",
+"f46464",
+"7c8460"]
+
+*/
+
+.bg-primary-login {
+    background-color: #cc3c3c !important;
+}
+
+.bg-primary-login.bg-soft-login {
+    background-color: rgba(255, 0, 0, 0.658) !important;
+}
+
+.text-primary-login{
+    color:#fff;
+    font-size: 1rem;
+}

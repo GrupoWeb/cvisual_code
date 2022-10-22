@@ -1,4 +1,12 @@
 {
+  "login":{
+    "authentication":{
+      "text":"Entrar"
+    },
+    "email":"Correo electrónico",
+    "password":"contraseña",
+    "forgot":"¿Olvidaste tu contraseña?"
+  },
   "navbar": {
     "search": {
       "text": "Buscar..."

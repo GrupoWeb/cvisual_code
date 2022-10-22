@@ -41,11 +41,17 @@ export default {
   },
   validations: {
     email: {
-      required: helpers.withMessage("Email is required", required),
-      email: helpers.withMessage("Please enter valid email", email),
+      required: helpers.withMessage(
+        "correo electronico es requerido",
+        required
+      ),
+      email: helpers.withMessage(
+        "Por favor introduzca un correo electrónico válido",
+        email
+      ),
     },
     password: {
-      required: helpers.withMessage("Password is required", required),
+      required: helpers.withMessage("se requiere contraseña", required),
     },
   },
   computed: {
@@ -87,12 +93,12 @@ export default {
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-5">
         <div class="card overflow-hidden">
-          <div class="bg-soft bg-primary">
+          <div class="bg-soft-login bg-primary-login">
             <div class="row">
               <div class="col-7">
-                <div class="text-primary p-4">
-                  <h5 class="text-primary">Welcome Back !</h5>
-                  <p>Sign in to continue to Skote.</p>
+                <div class="text-primary-login p-4">
+                  <h5 class="text-primary-login">Signs</h5>
+                  <p>Comunicación Visual S.A</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -105,15 +111,6 @@ export default {
             </div>
           </div>
           <div class="card-body pt-0">
-            <div>
-              <router-link to="/">
-                <div class="avatar-md profile-user-wid mb-4">
-                  <span class="avatar-title rounded-circle bg-light">
-                    <img src="@/assets/images/logo.svg" alt height="34" />
-                  </span>
-                </div>
-              </router-link>
-            </div>
             <b-alert
               v-model="isAuthError"
               variant="danger"
@@ -121,18 +118,18 @@ export default {
               dismissible
               >{{ authError }}</b-alert
             >
-            <!-- <div
+            <div
               v-if="notification.message"
               :class="'alert ' + notification.type"
             >
               {{ notification.message }}
-            </div> -->
+            </div>
 
-            <b-form class="p-2" @submit.prevent="tryToLogIn">
+            <b-form class="p-2 pt-5" @submit.prevent="tryToLogIn">
               <b-form-group
                 class="mb-3"
                 id="input-group-1"
-                label="Email"
+                :label="$t('login.email')"
                 label-for="input-1"
               >
                 <b-form-input
@@ -156,7 +153,7 @@ export default {
               <b-form-group
                 class="mb-3"
                 id="input-group-2"
-                label="Password"
+                :label="$t('login.password')"
                 label-for="input-2"
               >
                 <b-form-input
@@ -177,44 +174,25 @@ export default {
                   }}</span>
                 </div>
               </b-form-group>
-              <b-form-checkbox
-                class="form-check me-2 mt-0"
-                id="customControlInline"
-                name="checkbox-1"
-                value="accepted"
-                unchecked-value="not_accepted"
-                >Remember me
-              </b-form-checkbox>
+
               <div class="mt-3 d-grid">
-                <b-button type="submit" variant="primary" class="btn-block"
-                  >Log In</b-button
-                >
+                <b-button type="submit" variant="danger" class="w-xs">
+                  <i
+                    class="bx bx-loader bx-spin font-size-16 align-middle me-2"
+                  ></i>
+                  {{ $t("login.authentication.text") }}
+                </b-button>
               </div>
 
               <div class="mt-4 text-center">
                 <router-link to="/forgot-password" class="text-muted">
-                  <i class="mdi mdi-lock me-1"></i> Forgot your password?
+                  <i class="mdi mdi-lock me-1"></i> ¿Olvidaste tu contraseña?
                 </router-link>
               </div>
             </b-form>
           </div>
           <!-- end card-body -->
         </div>
-        <!-- end card -->
-
-        <!-- <div class="mt-5 text-center">
-          <p>
-            Don't have an account ?
-            <router-link to="/register" class="fw-medium text-primary"
-              >Signup now</router-link
-            >
-          </p>
-          <p>
-            © {{ new Date().getFullYear() }} Skote. Crafted with
-            <i class="mdi mdi-heart text-danger"></i> by Themesbrand
-          </p>
-        </div> -->
-        <!-- end row -->
       </div>
       <!-- end col -->
     </div>

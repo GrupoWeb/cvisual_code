@@ -17,6 +17,8 @@ import store from "./state/store";
 
 import "../src/design/app.scss";
 
+import "../src/design/css/custom.css"
+
 
 createApp(App)
   .use(store)
