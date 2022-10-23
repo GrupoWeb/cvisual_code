@@ -1,4 +1,5 @@
-FROM node:lts-alpine
+# FROM node:lts-alpine
+FROM jjolon/vue-pg:latest
 
 # RUN npm install -g http-server
 # RUN npm install --global yarn
@@ -7,14 +8,14 @@ RUN mkdir /app
 #
 WORKDIR /app
 #
-#COPY package*.json ./
+# COPY package*.json ./
 #
-#RUN npm install
+# RUN yarn
 #
-#COPY . .
+COPY dist .
 #
-#RUN npm run build
+# RUN yarn build
 #
-#EXPOSE 8080
+EXPOSE 80
 #
-#CMD ["http-server", "dist"]
+# CMD ["http-server", "dist"]
