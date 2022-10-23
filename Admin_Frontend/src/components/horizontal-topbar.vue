@@ -1,5 +1,5 @@
 <script>
-import { SimpleBar } from "simplebar-vue3"
+import { SimpleBar } from "simplebar-vue3";
 import { layoutComputed } from "@/state/helpers";
 
 /**
@@ -171,7 +171,7 @@ export default {
               <img src="@/assets/images/logo-light.svg" alt height="22" />
             </span>
             <span class="logo-lg">
-              <img src="@/assets/images/logo-light.png" alt height="19" />
+              <img src="@/assets/images/logo_sign.png" alt height="19" />
             </span>
           </router-link>
         </div>
@@ -193,7 +193,7 @@ export default {
           </div>
         </form>
 
-        <b-dropdown
+        <!-- <b-dropdown
           variant="black"
           class="dropdown-mega d-none d-lg-block ms-2"
           toggle-class="header-item"
@@ -405,7 +405,7 @@ export default {
               </div>
             </div>
           </div>
-        </b-dropdown>
+        </b-dropdown> -->
       </div>
 
       <div class="d-flex">
@@ -438,11 +438,15 @@ export default {
             </div>
           </form>
         </b-dropdown>
-     <select v-model="$i18n.locale" class="lang-dropdown border-0">
-    <option v-for="(locale, i) in languages" :key="`locale-${i}`" :value="locale.language">
-      {{ locale.title }}
-    </option>
-  </select>
+        <!-- <select v-model="$i18n.locale" class="lang-dropdown border-0">
+          <option
+            v-for="(locale, i) in languages"
+            :key="`locale-${i}`"
+            :value="locale.language"
+          >
+            {{ locale.title }}
+          </option>
+        </select> -->
         <b-dropdown
           class="d-none d-lg-inline-block noti-icon"
           menu-class="dropdown-menu-lg dropdown-menu-end"
@@ -596,7 +600,9 @@ export default {
             <a href="javascript: void(0);" class="text-reset notification-item">
               <div class="d-flex">
                 <div class="avatar-xs me-3">
-                  <span class="avatar-title bg-success rounded-circle font-size-16">
+                  <span
+                    class="avatar-title bg-success rounded-circle font-size-16"
+                  >
                     <i class="bx bx-badge-check"></i>
                   </span>
                 </div>
@@ -668,9 +674,9 @@ export default {
           <!-- item-->
           <b-dropdown-item>
             <router-link to="/contacts/profile" v-slot="{ navigate }" custom>
-            <span @click="navigate" @keypress.enter="navigate">
-              <i class="bx bx-user font-size-16 align-middle me-1"></i>
-              {{ $t("navbar.dropdown.henry.list.profile") }}
+              <span @click="navigate" @keypress.enter="navigate">
+                <i class="bx bx-user font-size-16 align-middle me-1"></i>
+                {{ $t("navbar.dropdown.henry.list.profile") }}
               </span>
             </router-link>
           </b-dropdown-item>

@@ -10,11 +10,11 @@ import { authComputed } from "@/state/helpers";
 export default {
   data() {
     return {
-     lang: "en",
+      lang: "en",
       text: null,
       flag: null,
       value: null,
-       languages: [
+      languages: [
         {
           flag: require("@/assets/images/flags/us.jpg"),
           language: "en",
@@ -40,12 +40,11 @@ export default {
           language: "ar",
           title: "Arabic",
         },
-      ]
+      ],
     };
   },
   components: { SimpleBar },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     toggleMenu() {
       this.$parent.toggleMenu();
@@ -80,7 +79,7 @@ export default {
         }
       }
     },
-   
+
     logoutUser() {
       // eslint-disable-next-line no-unused-vars
       axios.get("http://127.0.0.1:8000/api/logout").then((res) => {
@@ -116,7 +115,7 @@ export default {
               <img src="@/assets/images/logo-light.svg" alt height="22" />
             </span>
             <span class="logo-lg">
-              <img src="@/assets/images/logo-light.png" alt height="19" />
+              <img src="@/assets/images/logo_sign.png" alt height="19" />
             </span>
           </router-link>
         </div>
@@ -141,8 +140,8 @@ export default {
             <span class="bx bx-search-alt"></span>
           </div>
         </form>
-        
-        <b-dropdown
+
+        <!-- <b-dropdown
           variant="black"
           class="dropdown-mega d-none d-lg-block ms-2"
           toggle-class="header-item"
@@ -354,7 +353,7 @@ export default {
               </div>
             </div>
           </div>
-        </b-dropdown>
+        </b-dropdown> -->
       </div>
 
       <div class="d-flex">
@@ -389,11 +388,15 @@ export default {
         </b-dropdown>
 
         <select v-model="$i18n.locale" class="lang-dropdown border-0">
-          <option v-for="(locale, i) in languages" :key="`locale-${i}`" :value="locale.language">
+          <option
+            v-for="(locale, i) in languages"
+            :key="`locale-${i}`"
+            :value="locale.language"
+          >
             {{ locale.title }}
           </option>
         </select>
-      
+
         <b-dropdown
           class="d-none d-lg-inline-block noti-icon"
           menu-class="dropdown-menu-lg dropdown-menu-end"

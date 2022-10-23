@@ -5,7 +5,30 @@
     },
     "email":"Correo electrónico",
     "password":"contraseña",
-    "forgot":"¿Olvidaste tu contraseña?"
+    "forgot":"¿Olvidaste tu contraseña?",
+    "placeholder-reset": "Ingrese correo electrónico",
+    "reset":"Reinicar Contraseña"
+  },
+  "herramientas":{
+    "barra":{
+      "settings":"Ajustes",
+      "layout":"Diseño",
+      "width":"Ancho",
+      "fluid":"Fluido",
+      "boxed":"Caja",
+      "scrollable":"Desplazable",
+      "sidebar":"Lateral",
+      "icon":"Icono",
+      "topbar":"Superior"
+    }
+  },
+  "menuvertical": {
+    "menu": {
+      "text": "Módulo"
+    },
+    "user":{
+      "text":"Usuarios"
+    }
   },
   "navbar": {
     "search": {

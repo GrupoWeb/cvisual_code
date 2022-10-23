@@ -1,15 +1,13 @@
 <template>
-  <v-container v-show="isVisible" fluid fill-height>
-    <v-layout class="align-center justify-center loader-overlay">
-      <span class="loader">SIGN</span>
-      <span class="text" v-text="message" />
-    </v-layout>
-  </v-container>
+  <div v-show="isVisible" class="container">
+    <span class="loader">SIGN</span>
+    <span class="text" v-text="message" />
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Loading",
+  name: "LowLoading",
   props: {
     isVisible: {
       type: Boolean,
@@ -47,13 +45,13 @@ span.text {
   display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  color: #fff;
+  color: #e5433e;
   letter-spacing: 2px;
   position: relative;
   box-sizing: border-box;
 }
 .loader::after {
-  content: "Loading";
+  content: "SIGN";
   position: absolute;
   left: 0;
   top: 0;

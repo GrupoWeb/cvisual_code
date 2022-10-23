@@ -15,6 +15,16 @@ use Illuminate\Support\Str;
 |
 */
 
+// api Authentication
+Route::post('/login', [App\Http\Controllers\AuthenticationController::class, 'login']);
+Route::post('/register', [App\Http\Controllers\AuthenticationController::class, 'store']);
+Route::get('/user', [App\Http\Controllers\AuthenticationController::class, 'user']);
+// Route::group(['middleware' => 'auth:api'], function() {
+    Route::post('logout', [App\Http\Controllers\AuthenticationController::class, 'logout']);
+// });
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -31,14 +41,10 @@ Route::delete('/customer/{id}', 'CustomerController@destroy');
 
 Route::get('/menus', 'MenusController@index');
 
-Route::post('/register', [App\Http\Controllers\AuthenticationController::class, 'store']);
-Route::get('/user', [App\Http\Controllers\AuthenticationController::class, 'user']);
 
-Route::post('/login', [App\Http\Controllers\AuthenticationController::class, 'login']);
 
-Route::group(['middleware' => 'auth:api'], function() {
-    Route::post('logout', [App\Http\Controllers\AuthenticationController::class, 'logout']);
-});
+
+
 
 Route::group([
     'namespace' => 'Auth',

@@ -1,7 +1,7 @@
 <script>
 import MetisMenu from "metismenujs/dist/metismenujs";
 
-import { menuItems } from "./menu";
+import { menuItems } from "./menu-vertical";
 
 /**
  * Sidenav component

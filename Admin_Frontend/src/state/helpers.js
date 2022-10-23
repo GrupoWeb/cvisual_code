@@ -18,7 +18,7 @@ export const layoutComputed = {
   })
 }
 
-export const authMethods = mapActions('auth', ['guardarUsuario','autenticationSet','logIn', 'logOut', 'register', 'resetPassword'])
+export const authMethods = mapActions('auth', ['setToken', 'setUserId', 'cerrarSesion','autenticationSet','logIn', 'logOut', 'register', 'resetPassword'])
 
 export const layoutMethods = mapActions('layout', ['changeLayoutType', 'changeLayoutWidth', 'changeLeftSidebarType', 'changeTopbar', 'changeLoaderValue'])
 

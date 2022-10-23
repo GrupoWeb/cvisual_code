@@ -37,6 +37,9 @@ export default {
       authError: null,
       tryingToLogIn: false,
       isAuthError: false,
+      loading: false,
+      message_login: "Entrar",
+      disabled_button: false,
     };
   },
   validations: {
@@ -70,15 +73,22 @@ export default {
         return;
       } else {
         if (process.env.VUE_APP_DEFAULT_AUTH === "authapi") {
+          this.message_login = "Cargando";
+          this.loading = true;
+          this.disabled_button = true;
           axios
             .post(process.env.VUE_APP_SERVER + "login", {
               email: this.email,
               password: this.password,
             })
             .then((res) => {
-              const { access_token } = res.data;
-              this.guardarUsuario(access_token);
+              const { access_token, user_id } = res.data;
+              this.setToken(access_token);
+              this.setUserId(user_id);
               this.$router.push({ name: "default" });
+              this.message_login = "Entrar";
+              this.loading = false;
+              this.disabled_button = false;
             });
         }
       }
@@ -176,11 +186,17 @@ export default {
               </b-form-group>
 
               <div class="mt-3 d-grid">
-                <b-button type="submit" variant="danger" class="w-xs">
+                <b-button
+                  type="submit"
+                  variant="danger"
+                  class="w-xs"
+                  :disabled="disabled_button"
+                >
                   <i
+                    v-if="loading"
                     class="bx bx-loader bx-spin font-size-16 align-middle me-2"
                   ></i>
-                  {{ $t("login.authentication.text") }}
+                  {{ message_login }}
                 </b-button>
               </div>
 
@@ -192,6 +208,9 @@ export default {
             </b-form>
           </div>
           <!-- end card-body -->
+        </div>
+        <div class="mt-5 text-center">
+          <p>© {{ new Date().getFullYear() }} SIGN Comunicación Visual</p>
         </div>
       </div>
       <!-- end col -->

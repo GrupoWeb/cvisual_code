@@ -15,16 +15,16 @@ export default [
   //   name: "Register",
   //   component: () => import("./views/account/register"),
   // },
-  // {
-  //   path: "/forgot-password",
-  //   name: "Forgot password",
-  //   component: () => import("./views/account/forgot-password"),
-  // },
-  // {
-  //   path: "/logout",
-  //   name: "logout",
-  //   component: () => import("./views/account/logout"),
-  // },
+  {
+    path: "/forgot-password",
+    name: "Forgot password",
+    component: () => import(/* webpackChunkName: "forgot-password" */ "../modules/account/forgot-password"),
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: () => import(/* webpackChunkName: "logout" */ "../modules/account/logout"),
+  },
   {
     path: "/404",
     name: "404",

@@ -33,6 +33,7 @@ class AuthenticationController extends Controller
             $token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();
         return response()->json([
+            'user_id' => Auth()->user()->id,
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse(
@@ -63,7 +64,7 @@ class AuthenticationController extends Controller
             Auth::user()->AauthAcessToken()->delete();
         }
         return response()->json([
-            'message' => 'Successfully logged out'
+            'message' => 'Sessión cerrada con éxito'
         ]);
     }
 

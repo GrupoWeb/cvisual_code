@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
 
-import Layout from "../../layouts/auth";
+import Layout from "@/router/layouts/auth";
 import { authMethods } from "@/state/helpers";
 import appConfig from "@/app.config";
 
@@ -95,15 +95,15 @@ export default {
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-5">
         <div class="card overflow-hidden">
-          <div class="bg-soft bg-primary">
+          <div class="bg-soft-login bg-primary-login">
             <div class="row">
-              <div class="col-7">
-                <div class="text-primary p-4">
-                  <h5 class="text-primary">Reset Password</h5>
-                  <p>Re-Password with Skote.</p>
+              <div class="col-8">
+                <div class="text-primary-login p-4">
+                  <h4 class="text-primary-login">Restablecer la contraseña</h4>
+                  <p>Comunicación Visual S.A</p>
                 </div>
               </div>
-              <div class="col-5 align-self-end">
+              <div class="col-4 align-self-end">
                 <img
                   src="@/assets/images/profile-img.png"
                   alt
@@ -133,13 +133,13 @@ export default {
               >
               <form @submit.prevent="tryToReset">
                 <div class="mb-3">
-                  <label for="useremail">Email</label>
+                  <label for="useremail">{{ $t("login.email") }}</label>
                   <input
                     type="email"
                     v-model="email"
                     class="form-control"
                     id="useremail"
-                    placeholder="Enter email"
+                    :placeholder="$t('login.placeholder-reset')"
                     :class="{ 'is-invalid': submitted && v$.email.$errors }"
                   />
                   <div
@@ -152,8 +152,8 @@ export default {
                 </div>
                 <div class="mb-3 row mb-0">
                   <div class="col-12 text-end">
-                    <button class="btn btn-primary w-md" type="submit">
-                      Reset
+                    <button class="btn btn-danger w-md" type="submit">
+                      {{ $t("login.reset") }}
                     </button>
                   </div>
                 </div>
@@ -165,16 +165,7 @@ export default {
         <!-- end card -->
 
         <div class="mt-5 text-center">
-          <p>
-            Remember It ?
-            <router-link to="/login" class="fw-medium text-primary"
-              >Sign In here</router-link
-            >
-          </p>
-          <p>
-            © {{ new Date().getFullYear() }} Skote. Crafted with
-            <i class="mdi mdi-heart text-danger"></i> by Themesbrand
-          </p>
+          <p>© {{ new Date().getFullYear() }} SIGN Comunicación Visual</p>
         </div>
       </div>
       <!-- end col -->

@@ -5,6 +5,7 @@ import router from '../../router/routes'
 export const state = {
     currentUser: sessionStorage.getItem('authUser'),
     token: '',
+    user_id: '',
     usuarioDB: ''
 }
 
@@ -14,10 +15,13 @@ export const mutations = {
         saveState('auth.currentUser', newValue)
     },
 
-    obtenerUsuario(state, payload){
-        state.token = payload;
-        
-      }
+    SET_TOKEN(state, payload){
+        state.token = payload; 
+    },
+
+    SET_USER_ID(state, payload) {
+        state.user_id = payload
+    }
 }
 
 export const getters = {
@@ -33,16 +37,20 @@ export const getters = {
 
 export const actions = {
 
-    guardarUsuario({commit}, payload){
+    setToken({commit}, payload){
         localStorage.setItem('token', payload);
-        commit('obtenerUsuario', payload)
-      },
-      cerrarSesion({commit}){
-        commit('obtenerUsuario', '');
+        commit('SET_TOKEN', payload)
+    },
+    setUserId({ commit }, payload) {
+        localStorage.setItem('user_id', payload);
+        commit('SET_USER_ID', payload)
+    },
+    cerrarSesion(){
         localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
         router.push({name: 'login'});
       },
-      leerToken({commit}){
+    leerToken({commit}){
   
         const token = localStorage.getItem('token');
         if(token){
