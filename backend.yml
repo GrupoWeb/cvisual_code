@@ -59,7 +59,7 @@ spec:
     spec:
       containers:
         - name: cvisual-server
-          image: jjolon/cvisual:latest
+          image: jjolon/cvisual:1.0.0
           resources:
             requests:
               memory: "Gi"
