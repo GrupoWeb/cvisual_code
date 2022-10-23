@@ -1,7 +1,9 @@
 FROM php:7.4-apache 
 EXPOSE 80
 
-COPY vhost.conf /etc/apache2/sites-available/000-default.conf 
+COPY vhost.conf /etc/apache2/sites-available/000-default.conf
+
+USER root
 
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
