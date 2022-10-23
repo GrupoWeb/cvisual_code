@@ -4,9 +4,8 @@ FROM jjolon/vue-pg:latest
 # RUN npm install -g http-server
 # RUN npm install --global yarn
 
-RUN mkdir /app
 #
-WORKDIR /app
+WORKDIR /var/www/html/dist
 #
 # COPY package*.json ./
 #
