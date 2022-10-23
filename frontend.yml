@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cvisual-frontend
+  namespace: graduacion
+---
+# VOLUME DATA
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cvisual-deploy-front
+  namespace: graduacion
+  labels:
+    name: cvisual-deploy-front
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 168.232.79.90
+    path: "/proyecto/cvisual/backend/Admin_Frontend"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cvisual-deploy-front
+  namespace: graduacion
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      name: cvisual-deploy-front
+---
+# DEPLOYMENT APP
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cvisual-server-front
+  namespace: graduacion
+  labels:
+    run: cvisual-server-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: cvisual-server-front
+  template:
+    metadata:
+      labels:
+        run: cvisual-server-front
+    spec:
+      containers:
+        - name: cvisual-server-front
+          image: jjolon/vue-pg:latest
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "200m"
+            limits:
+              memory: "3Gi"
+              cpu: "700m"
+          ports:
+            - containerPort: 443
+              protocol: TCP
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: "/var/www/html"
+              name: vol-php-backend
+      volumes:
+          - name: vol-php-backend
+            persistentVolumeClaim:
+              claimName: cvisual-deploy-front
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvisual-server-front
+  namespace: graduacion
+  labels:
+    app.kubernetes.io/name: cvisual-server-front
+    app.kubernetes.io/part-of: cvisual-server-front
+spec:
+  # type: ClusterIP
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30011
+      protocol: TCP
+  selector:
+    run: cvisual-server-front
