@@ -1,6 +1,7 @@
-version: '3.7'
+version: '3'
 services:
-  frontend-app:
-    image: vue_cli:latest
-    # volumes:
-    #   - ./Admin_Frontend:/app
+  web:
+    container_name: "frontend_web"
+    image: jjolon/cvisual:1.0.4
+    volumes:
+      - ./Admin_Frontend:/app
