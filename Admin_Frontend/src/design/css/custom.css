@@ -25,11 +25,11 @@ f46464,
 */
 
 .bg-primary-login {
-    background-color: #cc3c3c !important;
+    background-color: #fff !important;
 }
 
 .bg-primary-login.bg-soft-login {
-    background-color: rgba(255, 0, 0, 0.658) !important;
+    background-color: rgba(214, 102, 102, 0.658) !important;
 }
 
 .text-primary-login{

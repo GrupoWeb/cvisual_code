@@ -4,7 +4,7 @@ import router from '../../router/routes'
 
 export const state = {
     currentUser: sessionStorage.getItem('authUser'),
-    token: '',
+    token: sessionStorage.getItem('token'),
     user_id: '',
     usuarioDB: ''
 }
@@ -25,6 +25,21 @@ export const mutations = {
 }
 
 export const getters = {
+    // obtencion de token de usuario loggeado
+
+    activeToken(state) {
+        console.log("statre")
+        return !!state.token
+    },
+
+
+    /*-------------------------------------- */
+
+
+
+
+
+
     // Whether the user is currently logged in.
     loggedIn(state) {
         return !!state.currentUser
@@ -37,17 +52,17 @@ export const getters = {
 
 export const actions = {
 
-    setToken({commit}, payload){
-        localStorage.setItem('token', payload);
+    setToken({ commit }, payload) {
+        sessionStorage.setItem('token', payload);
         commit('SET_TOKEN', payload)
     },
     setUserId({ commit }, payload) {
-        localStorage.setItem('user_id', payload);
+        sessionStorage.setItem('user_id', payload);
         commit('SET_USER_ID', payload)
     },
     cerrarSesion(){
-        localStorage.removeItem('token');
-        localStorage.removeItem('user_id');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user_id');
         router.push({name: 'login'});
       },
     leerToken({commit}){

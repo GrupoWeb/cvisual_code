@@ -1,6 +1,7 @@
 {
   "name": "skote",
   "version": "1.0.0",
+  "licence":"UNLICENSED",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

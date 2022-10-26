@@ -5,7 +5,7 @@ export const authComputed = {
     currentUser: (state) => state.currentUser,
     token:(state) => state.token
   }),
-  ...mapGetters('auth', ['loggedIn','tokenActive']),
+  ...mapGetters('auth', ['loggedIn','tokenActive','activeToken']),
 }
 
 export const layoutComputed = {

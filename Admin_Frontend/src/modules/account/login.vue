@@ -103,20 +103,10 @@ export default {
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-5">
         <div class="card overflow-hidden">
-          <div class="bg-soft-login bg-primary-login">
+          <div class="bg-primary-login">
             <div class="row">
-              <div class="col-7">
-                <div class="text-primary-login p-4">
-                  <h5 class="text-primary-login">Signs</h5>
-                  <p>Comunicación Visual S.A</p>
-                </div>
-              </div>
-              <div class="col-5 align-self-end">
-                <img
-                  src="@/assets/images/profile-img.png"
-                  alt
-                  class="img-fluid"
-                />
+              <div class="col-12 d-flex pt-4 justify-content-center">
+                <img src="@/assets/img/logo_cv.png" alt height="155" />
               </div>
             </div>
           </div>

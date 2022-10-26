@@ -106,7 +106,7 @@ export default {
               <img src="@/assets/images/logo.svg" alt height="22" />
             </span>
             <span class="logo-lg">
-              <img src="@/assets/images/logo-dark.png" alt height="17" />
+              <img src="@/assets/img/logo_cv1.png" alt height="50" />
             </span>
           </router-link>
 
@@ -115,7 +115,7 @@ export default {
               <img src="@/assets/images/logo-light.svg" alt height="22" />
             </span>
             <span class="logo-lg">
-              <img src="@/assets/images/logo_sign.png" alt height="19" />
+              <img src="@/assets/img/logo_cv1.png" alt height="50" />
             </span>
           </router-link>
         </div>

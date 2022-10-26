@@ -1,14 +1,26 @@
+import store from "@/state/store";
 export default [
   {
     path: "/default",
     name: "default",
-    meta: {requiresAuth: true},
+    meta: {authRequired: true},
     component: () => import("./views/dashboards/default"),
   },
   {
     path: "/",
     name: "login",
-    component: () => import(/* webpackChunkName: "login" */ '../modules/account/login')
+    component: () => import('../modules/account/login'),
+      beforeResolve(routeTo, routeFrom, next) {
+        // If the user is already logged in
+        console.log("test")
+        if (store.getters["auth/loggedIn"]) {
+          // Redirect to the home page instead
+          next({ name: "default" });
+        } else {
+          // Continue to the login page
+          next();
+        }
+    },
   },
   // {
   //   path: "/register",

@@ -26,15 +26,29 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   
-  const rutaProtegida = to.matched.some(record => record.meta.requiresAuth)
-  const token = localStorage.getItem('token');
-  
-  // console.log("token ", token, " Ruta ", rutaProtegida)
+  // const authRequired = to.matched.some((route) => route.meta.authRequired)
 
-  if (rutaProtegida && token === null) {
+  // function toPublicRouter(path) {
+  //   return 
+  // }
+
+  const publicPages = ['login', 'register', 'forgot-password','logout'];
+  const authpage = !publicPages.includes(to.name);
+  const token = sessionStorage.getItem('user_id');
+  
+
+
+
+  // const rutaProtegida = to.matched.some(record => record.meta.requiresAuth)
+  
+  
+
+  if (authpage && !token) {
       //next({ name: 'login', query: { next: to.name } })
       next({ name: 'login' })
-  } else next()
+  } else {
+     next() 
+  } 
 })
 
 
