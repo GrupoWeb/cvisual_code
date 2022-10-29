@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: cvisual-server-front
-          image: jjolon/cvisual:1.0.4
+          image: jjolon/cvisual:1.0.2
           resources:
             requests:
               memory: "1Gi"
