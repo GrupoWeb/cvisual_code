@@ -25,19 +25,19 @@ Route::get('/user', [App\Http\Controllers\AuthenticationController::class, 'user
 
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::post('/products', 'ProductController@store');
-Route::get('/products', 'ProductController@index');
-Route::get('/prices', 'ProductController@prices');
+// Route::post('/products', 'ProductController@store');
+// Route::get('/products', 'ProductController@index');
+// Route::get('/prices', 'ProductController@prices');
 
-Route::get('/customer', 'ProductController@index');
-Route::post('/customer', 'CustomerController@store');
-Route::get('/customer/{id}', 'CustomerController@show');
-Route::put('/customer/{id}', 'CustomerController@update');
-Route::delete('/customer/{id}', 'CustomerController@destroy');
+// Route::get('/customer', 'ProductController@index');
+// Route::post('/customer', 'CustomerController@store');
+// Route::get('/customer/{id}', 'CustomerController@show');
+// Route::put('/customer/{id}', 'CustomerController@update');
+// Route::delete('/customer/{id}', 'CustomerController@destroy');
 
 Route::get('/menus', 'MenusController@index');
 
@@ -46,22 +46,22 @@ Route::get('/menus', 'MenusController@index');
 
 
 
-Route::group([
-    'namespace' => 'Auth',
-    'middleware' => 'api',
-    'prefix' => 'password'
-], function () {
-    Route::post('create', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'create']);
-    Route::get('find/{token}', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'find']);
-    Route::post('reset', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'reset']);
-});
+// Route::group([
+//     'namespace' => 'Auth',
+//     'middleware' => 'api',
+//     'prefix' => 'password'
+// ], function () {
+//     Route::post('create', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'create']);
+//     Route::get('find/{token}', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'find']);
+//     Route::post('reset', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'reset']);
+// });
 
-Route::get('/redirect', function () {
-    $query = http_build_query([
-        'client_id' => 'client-id',
-        'redirect_uri' => 'http://example.com/callback',
-        'response_type' => 'code',
-        'scope' => 'place-orders check-status',
-    ]);
-    return redirect('http://your-app.com/oauth/authorize?' . $query);
-});
+// Route::get('/redirect', function () {
+//     $query = http_build_query([
+//         'client_id' => 'client-id',
+//         'redirect_uri' => 'http://example.com/callback',
+//         'response_type' => 'code',
+//         'scope' => 'place-orders check-status',
+//     ]);
+//     return redirect('http://your-app.com/oauth/authorize?' . $query);
+// });

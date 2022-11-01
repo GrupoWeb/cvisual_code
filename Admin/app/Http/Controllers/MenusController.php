@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MenuCategories;
+use App\Models\MenuCategories;
+use App\Models\Menu;
 
 class MenusController extends Controller
 {
@@ -12,5 +13,9 @@ class MenusController extends Controller
     {
         $data = MenuCategories::with('menu.submenu.submenu')->get();
         return response()->json($data);
+    }
+
+    public function menus(){
+        $data = Menu::
     }
 }

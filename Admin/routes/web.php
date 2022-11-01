@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/logout', 'Auth\LoginController@logout');
 // Route::get('/{component?}', 'HomeController@index')->name('home');
 // Route::get('/{group}/{component}/{id?}', 'HomeController@show');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
