@@ -1,7 +1,0 @@
-version: '3'
-services:
-  web:
-    container_name: "frontend_web"
-    image: jjolon/cvisual:1.0.4
-    volumes:
-      - ./Admin_Frontend:/app
