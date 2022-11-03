@@ -3,6 +3,42 @@ kind: ServiceAccount
 metadata:
   name: cvisual-frontend
   namespace: graduacion
+
+---
+# VOLUME DATA
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cvisual-deploy-frontend
+  namespace: graduacion
+  labels:
+    name: cvisual-deploy-frontend
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 168.232.79.90
+    path: "/proyecto/cvisual/frontend"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cvisual-deploy-frontend
+  namespace: graduacion
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      name: cvisual-deploy-frontend
 ---
 # DEPLOYMENT APP
 apiVersion: apps/v1
@@ -24,7 +60,7 @@ spec:
     spec:
       containers:
         - name: cvisual-server-front
-          image: jjolon/cvisual:1.0.2
+          image: jjolon/cvisualf:2.0.0
           resources:
             requests:
               memory: "1Gi"
@@ -37,6 +73,13 @@ spec:
               protocol: TCP
             - containerPort: 80
               protocol: TCP
+          volumeMounts:
+            - mountPath: "/var/www/html"
+              name: vol-php-frontend
+      volumes:
+        - name: vol-php-frontend
+          persistentVolumeClaim:
+            claimName: cvisual-deploy-frontend
 ---
 apiVersion: v1
 kind: Service
