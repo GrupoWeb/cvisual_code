@@ -59,7 +59,7 @@ spec:
     spec:
       containers:
         - name: cvisual-server
-          image: oberd/php-8.0-apache:latest
+          image: jjolon/cvisual:2.0.6
           resources:
             requests:
               memory: "1Gi"
@@ -73,7 +73,7 @@ spec:
             - containerPort: 80
               protocol: TCP
           volumeMounts:
-            - mountPath: "/var/www/html"
+            - mountPath: "/var/www/app"
               name: vol-php-backend
       volumes:
           - name: vol-php-backend
