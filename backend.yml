@@ -20,7 +20,7 @@ spec:
     - ReadWriteOnce
   nfs:
     server: 168.232.79.90
-    path: "/proyecto/cvisual/backend/Admin"
+    path: "/proyecto/cvisual/backend"
 
 ---
 apiVersion: v1
